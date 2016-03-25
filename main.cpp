@@ -24,6 +24,26 @@ int cmp(const void * a ,const void * b)
 }
 
 
+class CSample{
+    int x;
+    int y;
+public:
+    CSample(){
+        cout<<"Constructor 1 called"<<endl;
+    }
+    CSample(int a){
+        x = a;
+        cout<<"Constructor 2 called a = " << a <<endl;
+    }
+    CSample(int a,int b)
+    {
+
+        x = a;
+        y = b;
+        cout<<"Constructor 3 called x = "<< x <<" y = "<<y<<endl;
+    }
+};
+
 
 
 
@@ -72,5 +92,31 @@ int main(int argc,char * argv[])
 
     printf("%d",1<<0);
 
+
+
+
+
+
+    PLog("Constructor");
+
+    CSample array1[2];
+    CSample array2[2] = {4,5};
+
+    CSample array3[2] = {3};
+    cout<<"pointer new ========>>>>>>>"<<endl;
+
+    CSample * array4 = new CSample[2];
+    cout <<"Constructor have more than 1 arguments "<<endl;
+
+    CSample array5[3] = {1,CSample(2,3)};
+    CSample array6[3] = {CSample(4,5),1,CSample(6,7)};
+    CSample array7[] = {CSample(4,5),1,CSample(6,7)};
+
+    CSample *pArray[] = {new CSample(8),new CSample(9,10)};
+    CSample *pArray1[3] = {new CSample(8),new CSample(9,10)};
+
+    delete [] pArray1;
+    delete [] pArray;
+    delete [] array4;
     return 0;
 }
