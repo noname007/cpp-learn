@@ -33,6 +33,12 @@ T::~T(){
          //_id = 0;
         cout<<this->_id<<"  destructor was called "<<endl;
 }
+
+/*
+ *T test1()
+ *
+ */
+
 //T test1()
 T& test1()
 {
