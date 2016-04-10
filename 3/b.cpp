@@ -92,7 +92,7 @@ int main(){
                     }
                     red_producted_soilder_order_real_id = redWushiShengmingMap[red_producted_soilder_order];
                     //printf("===========>>>%d,%d\n",consume[red_producted_soilder_order_real_id],red_shengmingyuan);
-                    if(consume[red_producted_soilder_order_real_id] < red_shengmingyuan){
+                    if(consume[red_producted_soilder_order_real_id] <= red_shengmingyuan){
                         red_shengmingyuan -= consume[red_producted_soilder_order_real_id];
                         ++ red_meizhong_soilder_num[red_producted_soilder_order_real_id];
                         is_red_product = true;
@@ -129,7 +129,7 @@ int main(){
                     }
                     red_producted_soilder_order_real_id = blueWushiShengmingMap[blue_producted_soilder_order];
                     //printf("===========>>>%d,%d\n",consume[red_producted_soilder_order_real_id],red_shengmingyuan);
-                    if(consume[red_producted_soilder_order_real_id] < blue_shengmingyuan){
+                    if(consume[red_producted_soilder_order_real_id] <= blue_shengmingyuan){
                         blue_shengmingyuan -= consume[red_producted_soilder_order_real_id];
                         ++ blue_meizhong_soilder_num[red_producted_soilder_order_real_id];
                         is_blue_product = true;
