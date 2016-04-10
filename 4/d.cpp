@@ -8,6 +8,7 @@ class CHugeInt {
 
 
 /***************************************************************************/
+// 本地 库函数有这个函数，但是oj中没有
 void strrev(char * r){
     int len = strlen(r) - 1;
     for(int i =0;i < len;++i,--len){
@@ -48,6 +49,7 @@ public:
     }
 
     void operator += (const int &n){
+        //成员变量中不存在指针，不会出现浅拷贝问题，否则需要补充拷贝构造函数，和重载 = 运算符
        (*this) = (*this) + n;
     }
 
@@ -56,6 +58,8 @@ public:
         (*this) += 1;
         return (*this);
     }
+
+    //一开始一直是先计算结果，然后输出，查了一下课件原来此处重载返回的是值而不是引用
     CHugeInt operator++(int t){
         CHugeInt tt(*this);
         ++(*this);
