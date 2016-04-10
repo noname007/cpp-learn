@@ -1,47 +1,6 @@
-
 #include<iostream>
 #include<cstdio>
 using namespace std;
-/*
-1 testcase
-20 M
-dragon 、ninja、iceman、lion、wolf
-3 4 5 6 7
-
-2
-20
-3 4 5 6 7
-20
-3 4 5 6 7
-
-
-7
-20
-3 4 5 6 7
-40
-3 14 5 6 7
-30
-40 50 60 70 80
-100
-10 20 30 40 50
-400
-20 3 300 60 98
-1000
-332 90 47 8989 83
-5000
-200 400 6 70 20
-
-红方司令部按照iceman、lion、wolf、ninja、dragon的顺序循环制造武士。
-
-蓝方司令部按照lion、dragon、ninja、iceman、wolf的顺序循环制造武士。
-enum {
-//    0,   1     2      3    4
- dragon,ninja,iceman,lion,wolf
-};
-*/
-
-//#define DEBUG
-
 
 class Group{
     int shengmingyuan;
@@ -53,7 +12,7 @@ class Group{
     int * soilder_producted_order;
     char * group_name;
 public:
-    Group(int * order,int shengmingyuan,char*group_name):group_name(group_name),
+    Group(int * order,int shengmingyuan,char*group_name):soilder_producted_order(order),group_name(group_name),
                                                         shengmingyuan(shengmingyuan),
                                                         next_produced_soilder_id_index(0),
                                                         meizhong_soilder_num({0,0,0,0,0}),
@@ -61,11 +20,7 @@ public:
                                                         can_produce(true),
                                                         meizhong_soilder_name({"dragon","ninja","iceman","lion","wolf"})
     {
-        #ifdef DEBUG
-        //cout<<"=========================================";
-        #endif // DEBUG
 
-        soilder_producted_order = order;
     }
     /*
     *
@@ -104,8 +59,6 @@ public:
             }else{
                 can_produce = true;
             }
-
-
             if(can_produce)
             {
                 printf("%03d %s %s %d born with strength %d,%d %s in %s headquarter\n",
@@ -137,14 +90,13 @@ int main(){
     int M = 0;
     scanf("%d",&testCase);
     int *p = consume;
-    #ifdef DEBUG
-        freopen("out.txt","w",stdout);
-    #endif // DEBUG
+
+    //freopen("out.txt","w",stdout);
+
     for(int order = 1; order<= testCase; ++order)
     {
         scanf("%d",&M);
         scanf("%d%d%d%d%d",p,p+1,p+2,p+3,p+4);
-
 
         printf("Case:%d\n",order);
 
@@ -163,7 +115,6 @@ int main(){
             blue.produce_soilder(consume,timer);
             ++timer;
         }
-
 
     }
 
