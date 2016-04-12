@@ -3,6 +3,10 @@
 #include<cstdio>
 using namespace std;
 
+enum{
+    dragon,ninja,iceman,lion,wolf
+};
+const char * weapon[] = { "sword", "bomb","arrow"};
 class Group{
     int shengmingyuan;
     int next_produced_soilder_id_index;//下一个要生产的士兵编号
@@ -72,6 +76,25 @@ public:
                     meizhong_soilder_name[id],
                     group_name
                 );
+                switch(id){
+                    case dragon:
+                        //It has a arrow,and it's morale is 3.67
+                        printf("It has a %s,and it's morale is %.2f\n",weapon[soilder_total_num % 3],shengmingyuan/(1.0*consume[id]));
+                        break;
+                    case iceman:
+                        printf("It has a %s\n",weapon[soilder_total_num % 3]);
+                        break;
+                    case wolf:
+                        break;
+                    case ninja:
+                        printf("It has a %s and a %s\n",weapon[soilder_total_num % 3],weapon[(soilder_total_num + 1) % 3]);
+                        break;
+                    case lion:
+                        printf("It's loyalty is %d\n",shengmingyuan);
+                        break;
+                    default:
+                        break;
+                }
             }else{
                 //003 red headquarter stops making warriors
                 printf("%03d %s headquarter stops making warriors\n",timer,group_name);
@@ -102,8 +125,8 @@ int main(){
         printf("Case:%d\n",order);
 
         int timer = 0;
-        int red_order[] = {2,3,4,1,0};
-        int blue_order[] ={3,0,1,2,4};
+        int red_order[] =  {iceman,lion,wolf,ninja,dragon};//{2,3,4,1,0};
+        int blue_order[] ={lion,dragon,ninja,iceman,wolf};//{3,0,1,2,4};
         char red_name[] = "red";
         char blue_name[] = "blue";
         Group red(red_order,M,red_name),blue(blue_order,M,blue_name);
