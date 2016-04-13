@@ -164,7 +164,10 @@ MyString operator+(const char * c_str,const MyString & my_str){
     MyString t(c_str);
     return t + my_str;
 }
-
+//ostream & operator<<(ostream &os,const char *strr){
+//
+//    return os;
+//}
 //const char * operator[](MyString str[],int i){
 //    return "=============dddddddd=========";
 //}
@@ -186,6 +189,8 @@ int CompareString( const void * e1, const void * e2)
 }
 int main()
 {
+    char * temp = "";
+//    char * temp = "111";
 	MyString s1("abcd-"),s2,s3("efgh-"),s4(s1);
 	MyString SArray[4] = {"big","me","about","take"};
 	cout << "1. " << s1 << s2 << s3<< s4<< endl;
