@@ -42,6 +42,7 @@ public:
 //    MyString(){}
     MyString (const char * str = NULL){
         if(str == NULL){
+            s = NULL;
             len = 0;
             return;
         }
@@ -151,7 +152,11 @@ public:
     }
 };
 ostream &operator <<(ostream &os,const MyString & str){
-    os<<str.c_str();
+    if(str.c_str() == NULL){
+        os<<"";
+    }else{
+        os<<str.c_str();
+    }
     return os;
 }
 
