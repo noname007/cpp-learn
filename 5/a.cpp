@@ -41,10 +41,10 @@ class MyString
 public:
 //    MyString(){}
     MyString (const char * str = NULL){
-//        if(str == NULL){
-//            len = 0;
-//            return;
-//        }
+        if(str == NULL){
+            len = 0;
+            return;
+        }
         len = strlen(str);
         if(len){
             s = new char[len + 1];
