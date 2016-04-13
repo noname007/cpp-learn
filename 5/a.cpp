@@ -41,12 +41,16 @@ class MyString
 public:
 //    MyString(){}
     MyString (const char * str = NULL){
-
+//        if(str == NULL){
+//            len = 0;
+//            return;
+//        }
         len = strlen(str);
         if(len){
             s = new char[len + 1];
             strcpy(s,str);
         }else{
+            delete[] s;
             s = NULL;
         }
     }
@@ -58,19 +62,21 @@ public:
             s = new char[str.len + 1];
             strcpy(s,str.c_str());
         }else{
+            delete[] s;
             s = NULL;
         }
 
     }
 
     MyString & operator=(const MyString& str){
-        if(str.c_str() == s){
-            return (*this);
-        }
-
-        delete [] s;
-        s = new char[str.length()+1];
-        strcpy(s,str.c_str());
+        (*this) = str.c_str();
+//        if(str.c_str() == s){
+//            return (*this);
+//        }
+//
+//        delete [] s;
+//        s = new char[str.length()+1];
+//        strcpy(s,str.c_str());
         return (*this);
     }
 
@@ -81,21 +87,27 @@ public:
             s = new char[len + 1];
             strcpy(s,str);
         }else{
+            delete[] s;
             s = NULL;
+        }
+        return (*this);
+    }
+    ~MyString(){
+        if(s){
+            delete [] s;
         }
     }
 
     MyString operator + (const MyString &str){
         if(str.len <= 0){
-            return MyString(*this);
+            //return MyString(*this);
+            return *this;
         }
 
         char * s1 = new char[str.len + len + 1];
         strcpy(s1,s);
         strcat(s1,str.c_str());
-        delete [] s;
-        s = s1;
-        return MyString(s);
+        return MyString(s1);
     }
 
     int operator >(const MyString & str) const{
@@ -113,10 +125,24 @@ public:
     }
 
     MyString & operator +=(const char*str){
-        (*this) + MyString(str);
+        (*this) = (*this) + MyString(str);
         return (*this);
     }
 
+    MyString  operator ()(int start,int len){
+        char temp[len + 1];
+        for(int i = 0;i<len;++i){
+            temp[i] = s[start + i];
+        }
+        temp[len] = 0;
+        return MyString(temp);
+
+        //        return my_substr(start,len).c_str();
+    }
+
+//    MyString my_substr(int start,int len){
+//
+//    }
     const char * c_str() const{
         return s;
     }
@@ -129,6 +155,14 @@ ostream &operator <<(ostream &os,const MyString & str){
     return os;
 }
 
+MyString operator+(const char * c_str,const MyString & my_str){
+    MyString t(c_str);
+    return t + my_str;
+}
+
+//const char * operator[](MyString str[],int i){
+//    return "=============dddddddd=========";
+//}
 class tfdasfdklafkajk{
     /*********************************************************/
 };
