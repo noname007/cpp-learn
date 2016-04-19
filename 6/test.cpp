@@ -28,6 +28,11 @@ public:
 	void Heeeee(){
 		cout<<"hhhhhhhhhhhhhhhhhhhh"<<endl;
 	}
+
+	void print_this(){
+		printf("%x\n",this);
+		// printf("%x\n",&this); //error
+	}
 	void deletedd(){
 		delete this;
 	}
@@ -36,13 +41,13 @@ public:
 int main(){
 	// A * a = new A;
 	// A * &b = a;
-	A *a = new A,* &b = a;
+	// A *a = new A,* &b = a;
+	A *a = new A,* b = a;
 	A c;
 	printf("%x\n",a);
 	printf("%x\n",b);
 	printf("%x\n",&a);
 	printf("%x\n",&b);
-
 	cout<<"================================="<<endl;
 	cout<<b->a<<endl;
 	cout<<a->a<<endl;
@@ -58,7 +63,9 @@ int main(){
 	printf("%x\n",b);
 	printf("%x\n",&a);
 	printf("%x\n",&b);
+	b->print_this();
 	cout<<b->a<<endl;
+	cout<<a->a<<endl;
 	a->Heeeee();
 	b->Heeeee();
 
