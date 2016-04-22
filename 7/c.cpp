@@ -13,19 +13,18 @@ class CMyistream_iterator
 public:
 
     CMyistream_iterator(istream &is){
-        T t;
-        cin>>t;
-        v[0] = t;
+        cin>>v[0];
         index = 1;
     }
 
     void operator++(int){
-        index++;
+
+        cin>>v[index++];
     }
     //friend template<class T1> bool operator *(T1 & i);
     T operator *(){
-        cin>>v[index];
-        return v[index];
+
+        return v[index-1];
     }
 };
 //    template<class T>
@@ -36,7 +35,6 @@ public:
 class TTTTTTTTT{
     /*********************************************************/
 };
-
 
 
 int main()
